@@ -1,8 +1,34 @@
 class Solution {
-    public void moveZeroes(int[] nums) {
+    public void moveZeroes(int[] nums) 
+    {
+        //Optimal Approach
+
+        int j = -1;
+
+        for(int i=0; i<nums.length; i++)
+        {
+            if(nums[i] == 0){
+                j = i;
+                break;
+            }
+        }
+        if (j == -1) return;
+
+        for(int i=j+1; i<nums.length; i++)
+        {
+            if(nums[i] != 0){
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                j++;
+            }
+        }
+
+        // Brute Approach 
+    /*
         List<Integer> temp = new ArrayList<>();
         int n = nums.length;
-        
+
         for(int i=0; i<n; i++){
             if(nums[i] != 0){
                 temp.add(nums[i]);
@@ -17,5 +43,6 @@ class Solution {
         for(int i=j; i<n; i++){
             nums[i] = 0;
         }
+    */
     }
 }
