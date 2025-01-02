@@ -12,6 +12,22 @@ class Solution {
         }
 
         return profit;
-        
-    } 
+
+        // Another Approach
+/*
+        int buy = Integer.MAX_VALUE;
+        int sell = 0;
+
+        for(int i=0; i<prices.length; i++)
+        {
+            if(prices[i]< buy)
+                buy = prices[i];
+            
+            if(prices[i] - buy > sell)
+                sell = prices[i] - buy;
+        }
+
+        return sell;
+*/
+    }
 }
