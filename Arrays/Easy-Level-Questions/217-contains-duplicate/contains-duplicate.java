@@ -1,7 +1,8 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) 
     {
-        // Using Hashing
+/*
+        // Using Hashing - variant 1
         
         HashSet<Integer> set = new HashSet<>();
 
@@ -13,6 +14,17 @@ class Solution {
             return true;
         }
 
+        return false;
+*/
+        // Variant - 2
+        HashSet<Integer> uniqueSet = new HashSet<>();
+
+        for (int num : nums) 
+        {
+            if (!uniqueSet.add(num)) {
+                return true;
+            }
+        }
         return false;
 
 /*
