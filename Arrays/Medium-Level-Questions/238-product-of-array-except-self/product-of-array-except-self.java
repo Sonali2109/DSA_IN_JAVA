@@ -3,7 +3,8 @@ class Solution {
         int[] ans = new int[nums.length];
 
         // OPTIMAL APPROACH
-        Arrays.fill(ans,1);
+        //Arrays.fill(ans,1);
+        ans[0] = 1;
         for(int i=1; i<nums.length; i++){
             ans[i] = ans[i-1] * nums[i-1];
         }
