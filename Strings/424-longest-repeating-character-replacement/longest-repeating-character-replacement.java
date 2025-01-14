@@ -15,10 +15,26 @@ class Solution {
                 freqs.put(left, freqs.get(left) - 1);
                 i++;
             }
-
             res = Math.max(res, j - i + 1);
         }
 
         return res;
+/*
+        HashMap<Character,Integer> mpp = new HashMap<Character,Integer>();
+        int left = 0, right = 0;
+        int len = 0;
+
+        while( right < s.length()) {
+            if(mpp.containsKey(s.charAt(right)))
+            {
+                left = Math.max(mpp.get(s.charAt(right)) + 1, left);
+            }
+
+            len = Math.max(len, right - left + 1);
+            right++;
+        }
+
+        return len;
+*/
     }
 }
