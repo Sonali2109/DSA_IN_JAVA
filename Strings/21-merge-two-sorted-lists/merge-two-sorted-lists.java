@@ -9,32 +9,43 @@
  * }
  */
 class Solution {
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) 
-    {
-        ListNode temp1 = list1;
-        ListNode temp2 = list2;
-        ListNode head = new ListNode(100);
-        ListNode temp = head;
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
-        while(temp1!=null && temp2!=null){
-
-            if(temp1.val< temp2.val){
-                ListNode a = new ListNode(temp1.val);
-                temp.next = a;
-                temp = a;
-                temp1 = temp1.next;
-            }
-            else{
-                ListNode a = new ListNode(temp2.val);
-                temp.next = a;
-                temp = a;
-                temp2 = temp2.next;
-            }
+        //Returning lists if one or both list is empty
+        if(list1 == null && list2 == null){
+            return list1;
+        }else if(list1 == null){
+            return list2;
+        }else if(list2 == null){
+            return list1;
         }
 
-        if(temp1==null)     temp.next = temp2;
-        else    temp.next = temp1;
+        //New Sorted list
+        ListNode queryingDummy = new ListNode();
 
-        return head.next;
+        //New Head for result
+        ListNode newHead = queryingDummy;
+        
+        while(list1!=null && list2!=null){
+            if(list1.val<list2.val){
+                queryingDummy.next = list1;
+                list1 = list1.next;
+            }else{
+                queryingDummy.next = list2;
+                list2 = list2.next;
+            }
+            queryingDummy= queryingDummy.next;
+        }
+
+        //Setting remaing list in the resulted sorted list
+        if(list1==null && list2!=null){
+            queryingDummy.next = list2;
+        }else if(list1!=null && list2==null){
+            queryingDummy.next = list1;
+
+        }
+
+        return newHead.next;
+        
     }
 }
